@@ -1,0 +1,18 @@
+<br><br><br><br>
+<div *ngIf="medicalRecords.length === 0" class="alert alert-info">
+    No medical records found.
+  </div>
+  
+  <div *ngFor="let record of medicalRecords" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Consultation Date: {{ record.consultationDate | date }}</h5>
+      <p><strong>Symptoms:</strong> {{ record.symptoms }}</p>
+      <p><strong>Treatment Plan:</strong> {{ record.treatmentPlan }}</p>
+      <p><strong>Prescribed Tests:</strong> {{ record.prescribedTests?.join(', ') }}</p>
+      <button
+        class="btn btn-primary">
+        View Prescription
+      </button>
+    </div>
+  </div>
+  

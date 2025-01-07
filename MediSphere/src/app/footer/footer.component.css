@@ -1,0 +1,92 @@
+/* General footer styles */
+.footer {
+  background-color: #1E5162;
+  color: white;
+  padding: 20px 10px;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Logo and address section */
+.footer-logo {
+  flex: 1 1 30%;
+  line-height: 1.5;
+}
+
+.footer-logo h4 {
+  margin: 0 0 10px;
+}
+
+/* Social media links */
+.footer-social {
+  flex: 1 1 30%;
+}
+
+.footer-social h4 {
+  margin-bottom: 10px;
+}
+
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-links li {
+  margin-bottom: 5px;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+/* Footer links */
+.footer-links {
+  flex: 1 1 30%;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 5px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Footer bottom section */
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+}

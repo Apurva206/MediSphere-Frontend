@@ -1,0 +1,97 @@
+<br><br><br><br>
+<!-- The sidebar -->
+<div class="sidebar">
+    <a class="nav-link" routerLink="/app-patient-dashboard"  routerLinkActive="active">
+    <fa-icon [icon]="faAddressCard" size= "2x" style = "margin-right: 10px; right: 2px;"></fa-icon>Profile</a>
+    
+    <a class="nav-link" routerLink="/app-patient-book-appointment"  routerLinkActive="active">
+    <fa-icon [icon]="fabookmark"size= "2x"style = "margin-right: 10px; right: 2px;"></fa-icon>Book Appointment</a>
+    
+    <a class="nav-link" routerLink="/app-patient-appointment"  routerLinkActive="active">
+        <fa-icon [icon]="faCalendarCheck"size= "2x"style = "margin-right: 10px; right: 2px;"></fa-icon>My Appointments</a>
+
+    <a class="nav-link" routerLink="/app-patient-record" routerLinkActive="active">
+    <fa-icon [icon]="faNotesMedical" size= "2x"style = "margin-right: 10px; right: 2px;"></fa-icon>Medical Records</a>
+    
+    <a class="nav-link" routerLink="/app-patient-prescription" routerLinkActive="active">
+    <fa-icon [icon]="faFile" size= "2x"style = "margin-right: 10px; right: 2px;"></fa-icon>Prescriptions</a>
+  </div>
+  
+  <!-- Page content -->
+  <div class="content">
+    <div class="dashboard-container">
+      <h1>Patient Dashboard</h1>
+      <form (ngSubmit)="onSubmit()">
+        <!-- <div>
+          <label for="userId">User ID:</label>
+          <input
+            type="text"
+            id="userId"
+            [(ngModel)]="patientProfile.userId"
+            name="userId"
+            disabled
+          />
+        </div> -->
+        <div>
+          <label for="fullName">Full Name:</label>
+          <input
+            type="text"
+            id="fullName"
+            [(ngModel)]="patientProfile.fullName"
+            name="fullName"
+            required
+          />
+        </div>
+        <div>
+          <label for="dateOfBirth">Date of Birth:</label>
+          <input
+            type="date"
+            id="dateOfBirth"
+            [(ngModel)]="patientProfile.dateOfBirth"
+            name="dateOfBirth"
+            required
+          />
+        </div>
+        <div>
+          <label for="gender">Gender:</label>
+          <input
+            type="text"
+            id="gender"
+            [(ngModel)]="patientProfile.gender"
+            name="gender"
+            required
+          />
+        </div>
+        <div>
+          <label for="contactNumber">Contact Number:</label>
+          <input
+            type="text"
+            id="contactNumber"
+            [(ngModel)]="patientProfile.contactNumber"
+            name="contactNumber"
+            required
+          />
+        </div>
+        <div>
+          <label for="address">Address:</label>
+          <textarea
+            id="address"
+            [(ngModel)]="patientProfile.address"
+            name="address"
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label for="medicalHistory">Medical History:</label>
+          <textarea
+            id="medicalHistory"
+            [(ngModel)]="patientProfile.medicalHistory"
+            name="medicalHistory"
+          ></textarea>
+        </div>
+        <button type="submit">Save Profile</button>
+      </form>
+    </div>
+    
+    <router-outlet></router-outlet> 
+  </div>

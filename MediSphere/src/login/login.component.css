@@ -1,0 +1,117 @@
+
+/* General Form Styling */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #1E5162;
+    border-radius: 10px;
+    background-color: white;
+    color: #1E5162;
+    box-shadow: 0 4px 12px rgba(30, 81, 98, 0.2);
+  }
+  
+  /* Form Header */
+  .login-form h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Fields */
+  .login-form div {
+    margin-bottom: 15px;
+  }
+  
+  /* Label Styling */
+  .login-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #1E5162;
+  }
+  
+  /* Input Fields */
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #1E5162;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Input Focus Styling */
+  .login-form input:focus {
+    outline: none;
+    border-color: #6c757d;
+  }
+  
+  /* Error Message Styling */
+  .error {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .error p {
+    font-size: 14px;
+    color: red;
+  }
+  
+  /* Success Message Styling */
+  .success {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .success p {
+    font-size: 14px;
+    color: green;
+  }
+  
+  /* Submit Button Styling */
+  .login-form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Hover Effect for Submit Button */
+  .login-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link Styling */
+a[routerLink] {
+  display: block; /* Makes it appear as a block element */
+  margin: 10px 0; /* Adds spacing above and below the link */
+  color: #007bff; /* Default blue color for links */
+  text-decoration: none; /* Removes the default underline */
+  font-size: 16px; /* Sets a readable font size */
+  font-weight: 500; /* Slightly bold for better visibility */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect */
+a[routerLink]:hover {
+  color: #1E5162; /* Darker blue on hover */
+  text-decoration: underline; /* Underline on hover */
+  transform: translateX(5px); /* Subtle right shift effect */
+}
+
+/* Active Link Styling */
+a[routerLinkActive="true"] {
+  color: #2681a0; /* Green color for active links */
+  font-weight: 600; /* Slightly bolder */
+}

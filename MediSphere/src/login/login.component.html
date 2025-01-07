@@ -1,0 +1,59 @@
+<br><br><br><br><br><br>
+
+<div class="login-form">
+    <h2>Login Form</h2>
+    <form #loginForm="ngForm" (ngSubmit)="onLoginSubmit()">
+    
+      <!-- Username Field -->
+      <div>
+        <label for="Username">Username:</label>
+        <input
+          type="text"
+          id="Username"
+          name="Username"
+          [(ngModel)]="loginObj.Username"
+          required
+        />
+      </div>
+      <!-- Email Field -->
+      <div>
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          id="Email"
+          name="Email"
+          [(ngModel)]="loginObj.Email"
+          required
+        />
+      </div>
+      <!-- Password Field -->
+      <div>
+        <label for="Password">Password:</label>
+        <input
+          type="Password"
+          id="Password"
+          name="Password"
+          [(ngModel)]="loginObj.Password"
+          required
+        />
+      </div>
+  
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="error">
+        <p style="color: red;">{{ errorMessage }}</p>
+      </div>
+  
+      <!-- Submit Button -->
+      <a style="display: block;" routerLink="/app-forgot-password" routerLinkActive="true">Forgot Password?</a>
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      <p>Not a Member?<a style="display: inline;" routerLink="/app-register" routerLinkActive="true">Sign up</a></p>
+      
+    </form>
+  
+    <!-- Success Message -->
+    <div *ngIf="isLoggedIn" class="success">
+      <p style="color: green;">Login successful!</p>
+    </div>
+  </div>
+
+  

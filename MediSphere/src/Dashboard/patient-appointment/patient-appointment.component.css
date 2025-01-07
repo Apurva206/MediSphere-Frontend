@@ -1,0 +1,210 @@
+/* Appointment Container Styling */
+.appointment-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f1f3f5; /* Soft, modern background color */
+  border-radius: 16px; /* Rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deep shadow for depth */
+  animation: fadeIn 1s ease-out, slideInFromBottom 1s ease-out; /* Enhanced animations */
+}
+
+/* Heading Styling */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #1e8e6f; /* Fresh, vibrant accent color */
+  margin-bottom: 25px;
+  font-family: 'Roboto', sans-serif;
+  animation: slideInFromTop 1s ease-out, bounceIn 1s ease-out; /* Smooth bounce effect */
+}
+
+/* Appointment Card Styling */
+.appointment-card {
+  background: #ffffff; /* Clean white background */
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Subtle card shadow */
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Smooth transitions */
+  animation: fadeInUp 1s ease-out, scaleUp 0.8s ease-in-out; /* Smooth scaling */
+}
+
+.appointment-card:hover {
+  transform: translateY(-10px) scale(1.03); /* Slight lift with scale */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  background-color: #f9f9f9; /* Light background change on hover */
+}
+
+/* Appointment Card Heading */
+.appointment-card h3 {
+  margin-top: 0;
+  color: #2d3436; /* Dark text for readability */
+  font-size: 1.6rem;
+  border-bottom: 2px solid #1e8e6f; /* Elegant accent line */
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  font-family: 'Roboto', sans-serif;
+  animation: slideInFromLeft 1s ease-out, swing 1s ease-out; /* Smooth slide-in animation */
+}
+
+/* Appointment Card Paragraphs */
+.appointment-card p {
+  margin: 8px 0;
+  color: #636e72; /* Subtle text color */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  animation: fadeInUp 1s ease-out, slideInFromRight 1s ease-out; /* Smooth fade and slide */
+}
+
+/* Strong Text in Appointment Card */
+.appointment-card p strong {
+  color: #1e8e6f; /* Accent color for important text */
+  font-weight: bold;
+}
+
+/* No Appointments Text */
+.no-appointments {
+  text-align: center;
+  font-style: italic;
+  color: #95a5a6; /* Light gray */
+  font-size: 1.3rem;
+  animation: fadeIn 1s ease-out, zoomIn 1s ease-out; /* Zoom-in effect for a fresh feel */
+}
+
+/* Cancel Button Styling */
+.btn-cancel {
+  background-color: #e74c3c; /* Red background for cancel */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 18px;
+  font-size: 1.1rem;
+  border-radius: 50px; /* Rounded button */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smoother transitions */
+  margin-left: 12px;
+  animation: bounceIn 1s ease-out, fadeInUp 1s ease-out; /* Bounce-in + fade-in effect for button */
+}
+
+.btn-cancel:hover {
+  background-color: #c0392b; /* Darker red when hovering */
+  transform: scale(1.05); /* Slight grow effect */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Elevated shadow effect */
+}
+
+.btn-cancel:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 8px rgba(231, 76, 60, 0.8); /* Glow effect on focus */
+}
+
+.btn-cancel:active {
+  background-color: #9b2d2b; /* Even darker red on click */
+  transform: scale(1); /* Reset scale on click */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .appointment-container {
+    padding: 18px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .appointment-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .appointment-card p {
+    font-size: 1rem;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+

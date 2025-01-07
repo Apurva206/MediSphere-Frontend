@@ -1,0 +1,25 @@
+<div class="header">
+    <a href="#default" class="logo">
+      <fa-icon [icon]="faHospital"style = "margin-right: 10px; right: 2px;"></fa-icon>MediSphere
+    </a>
+    <div class="header-right">
+      <a class="nav-link" routerLink="/app-home"  routerLinkActive="active">
+        <fa-icon [icon]="faHouse"style = "margin-right: 10px; right: 2px;"></fa-icon>Home</a>
+        
+        <a class="nav-link" routerLink="/app-login"  routerLinkActive="active">
+        <fa-icon [icon]="faUser"style = "margin-right: 10px; right: 2px;"></fa-icon>Login
+      </a>
+      <!-- <a class="nav-link" (click)="onLogout()">
+        <fa-icon [icon]="faUser"style = "margin-right: 10px; right: 2px;"></fa-icon>Logout
+      </a> -->
+      <a class="nav-link" routerLink="/app-register"  routerLinkActive="active">
+        <fa-icon [icon]="faUserPlus"style = "margin-right: 10px; right: 2px;"></fa-icon>Register
+      </a>
+
+      <a class="nav-link" (click)="logout()">
+        Logout<fa-icon [icon]="faRightFromBracket" style = "margin-left: 10px; left: 2px;"></fa-icon></a>
+        
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>

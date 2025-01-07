@@ -1,0 +1,22 @@
+<br><br><br>
+<div class="appointment-container">
+    <h2>Appointments History</h2>
+    <div *ngIf="appointments.length === 0" class="no-appointments">
+      <p>No appointments found.</p>
+    </div>
+    <div *ngFor="let appointment of appointments" class="appointment-card">
+      <h3>Appointment ID: {{ appointment.appointmentId }}</h3>
+      <!-- <p><strong>Doctor Name:</strong> {{ appointment.doctorName }}</p> -->
+      <p><strong>Doctor Speciality:</strong> {{ appointment.doctorSpecialty }}</p>
+      <p><strong>Appointment Date:</strong> {{ appointment.appointmentDate }}</p>
+      <p><strong>Symptoms:</strong> {{ appointment.symptoms }}</p>
+      <p><strong>Status:</strong> {{ appointment.status }}</p>
+      <p><strong>Consultation Notes:</strong> {{ appointment.consultationNotes || 'N/A' }}</p>
+      <div class="appointment-actions">
+        <!-- Edit and Cancel buttons -->
+      <!-- <button (click)="editAppointment(appointment)" class="btn btn-edit">Edit</button> -->
+      <button (click)="cancelAppointment(appointment.appointmentId)" class="btn btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+  

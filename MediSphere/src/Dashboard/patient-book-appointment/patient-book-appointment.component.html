@@ -1,0 +1,47 @@
+<br><br><br><br><br>
+<div class="container">
+    
+    <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
+        <h2>Book an Appointment</h2>
+        <p>Fill out the form below to schedule an appointment with one of our specialists.</p>
+        <br><br>
+        <!-- Specialty Dropdown -->
+<div class="form-group">
+  <label for="specialty">Specialty:</label>
+  <select id="specialty" class="form-control" [(ngModel)]="selectedSpecialty" name="specialty" (change)="onSpecialtyChange()" required>
+    <option *ngFor="let specialty of specialty" [value]="specialty">{{ specialty }}</option>
+  </select>
+</div>
+
+        <!-- <div class="aform-group">
+            <label for="doctorId" >Enter Your ID:</label>
+            <input type="number" [(ngModel)]="appointment.doctorId" name="doctorId" placeholder="Enter your ID">
+          </div> -->
+      <div class="form-group">
+        <label for="appointmentDate">Appointment Date:</label>
+        <input type="datetime-local" id="appointmentDate" class="form-control" [(ngModel)]="appointment.appointmentDate" name="appointmentDate" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" class="form-control" [(ngModel)]="appointment.status" name="status" required>
+          <option value="scheduled">Scheduled</option>
+          <option value="completed">Completed</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="symptoms">Symptoms:</label>
+        <textarea id="symptoms" class="form-control" [(ngModel)]="appointment.symptoms" name="symptoms" rows="4" required></textarea>
+      </div>
+  
+      <!-- <div class="form-group">
+        <label for="consultationNotes">Consultation Notes:</label>
+        <textarea id="consultationNotes" class="form-control" [(ngModel)]="appointment.consultationNotes" name="consultationNotes" rows="4" required></textarea>
+      </div>  -->
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!appointmentForm.form.valid">Submit</button>
+    </form>
+  </div>
+  

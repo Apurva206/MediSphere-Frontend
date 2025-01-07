@@ -1,0 +1,57 @@
+.medical-records-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Soft background */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deep shadow for depth */
+  }
+  
+  .medical-records-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #35978d; /* Accent color */
+    margin-bottom: 30px;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .section h3 {
+    font-size: 1.5rem;
+    color: #2d3436;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .section p, .section ul {
+    font-size: 1.1rem;
+    color: #636e72; /* Subtle text color */
+    line-height: 1.6;
+  }
+  
+  .section ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .section ul li {
+    margin: 8px 0;
+  }
+  
+  .btn-download {
+    background-color: #1e8e6f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-download:hover {
+    background-color: #159177;
+  }
+  

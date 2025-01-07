@@ -1,0 +1,104 @@
+
+<div class="registration-form">
+    <h2>Registration Form</h2>
+    <form #registrationForm="ngForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Name Field -->
+      <div>
+        <label for="Username">Name:</label>
+        <input
+          type="text"
+          id="Username"
+          name="Username"
+          [(ngModel)]="user.Username"
+          required
+        />
+      </div>
+
+      <!-- Role Dropdown -->
+    <div>
+      <label for="Role">Role:</label>
+      <select
+        id="Role"
+        name="Role"
+        [(ngModel)]="user.Role"
+        required
+      >
+        <option value="" disabled selected>Select your role</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Patient">Patient</option>
+      </select>
+    </div>
+  
+      <!-- Email Field -->
+      <div>
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          id="Email"
+          name="Email"
+          [(ngModel)]="user.Email"
+          required
+        />
+      </div>
+  
+      <!-- Password Field -->
+    <div>
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="user.password"
+        required
+        minlength="6"
+      />
+    </div>
+
+    <!-- Confirm Password Field -->
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        [(ngModel)]="user.confirmPassword"
+        required
+        minlength="6"
+      />
+    </div>
+
+    <!-- Password Match Validation -->
+    <div *ngIf="user.password && user.confirmPassword && user.password !== user.confirmPassword" class="error">
+      <p style="color: red;">Passwords do not match!</p>
+    </div>
+
+     <!-- Error Message -->
+     <div *ngIf="errorMessage" class="error">
+      <p style="color: red;">{{ errorMessage }}</p>
+    </div>
+    <div *ngIf="successMessage" class="success">
+      <p style="color: green;">{{ successMessage }}</p>
+    </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
+    </form>
+    <!-- Success Message -->
+  <div *ngIf="isRegistered" class="success">
+    <p style="color: green;">User registered successfully!</p>
+    <button (click)="resetForm()">OK</button>
+  </div>
+    
+</div>
+<div>
+  <!-- Button to fetch data from localStorage 
+  <button (click)="fetchData()">Fetch Data from LocalStorage</button>
+  <div *ngIf="fetcheduser">
+    <h3>Stored User Details:</h3>
+    <p>Name: {{ fetcheduser.name }}</p>
+    <p>Email: {{ fetcheduser.email }}</p>
+    <p>Phone: {{ fetcheduser.phone }}</p>
+    <p>Address: {{ fetcheduser.address }}</p>
+  </div>
+</div> -->
