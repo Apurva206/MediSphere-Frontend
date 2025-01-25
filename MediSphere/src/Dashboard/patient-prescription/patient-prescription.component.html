@@ -1,1 +1,37 @@
-<p>patient-prescription works!</p>
+<br><br><br><br>
+<div class="heading">
+   <h2>
+    <button class="back-button" (click)="navigateToDashboard()">&#8592; Back</button>
+    <!-- <fa-icon [icon]="faNotesMedical" style = "margin-right: 10px; right: 2px;"></fa-icon> -->
+    Prescription</h2>
+</div>
+<div *ngIf="prescriptions.length === 0" class="alert alert-info">
+    No Prescriptions found.
+  </div>
+  
+  <div *ngFor="let prescriptions of prescriptions" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Patient Name: {{ Username }}</h5>
+      <!-- <p><strong>Doctor Name:</strong> {{ prescriptions.doctorName }}</p>
+      <p><strong>Speciality:</strong> {{ prescriptions.doctorSpecialty }}</p> -->
+      <p><strong>Medicine Name:</strong> {{ prescriptions.medicineName }}</p>
+      <p><strong>Dosage:</strong> {{ prescriptions.dosage }}</p>
+      <p><strong>Frequency:</strong> {{ prescriptions.frequency }}</p>
+      <p><strong>Food Instructions:</strong> {{ prescriptions.foodInstructions }}</p>
+
+       <!-- Medical Record Details -->
+    <div *ngIf="symptoms || consultationDate || treatmentPlan || prescribedTests" class="mt-4">
+      <h5><strong>Medical Record Details</strong></h5>
+      <p><strong>Symptoms:</strong> {{ symptoms || 'Not available' }}</p>
+      <p><strong>Consultation Date:</strong> {{ consultationDate || 'Not available' }}</p>
+      <p><strong>Treatment Plan:</strong> {{ treatmentPlan || 'Not available' }}</p>
+      <p><strong>Prescribed Tests:</strong> {{ prescribedTests || 'Not available' }}</p>
+    </div>
+    
+      <div class="buttons-container">
+        <!-- <button class="btn btn-primary">View Prescription</button> -->
+        <button class="btn btn-secondary">Download Prescription</button>
+        <button class="btn btn-info" >View Appointment</button>
+      </div>
+    </div>
+  </div>

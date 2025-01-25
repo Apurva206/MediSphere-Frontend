@@ -1,0 +1,161 @@
+/* Heading */
+.heading {
+    text-align: center;
+    margin: 0 auto;
+    color: #2c3e50; /* Darker shade for text */
+    margin: 0;
+    padding: 10px 20px;
+    border: 2px solid #d9e2ec;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  /* Back Button */
+  .back-button {
+    position: absolute;
+    top: 103px;
+    left: 28px;
+    padding: 8px 12px;
+    background-color: #1E5162;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .back-button:hover {
+    background-color: #2180a0;
+    transform: scale(1.05);
+  }
+  /* Base styles for the card */
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Heading Section */
+/* .heading h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #333;
+  background-color: #e9f7fc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  left: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: #0056b3;
+} */
+
+/* Alert Section */
+.alert {
+  text-align: center;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  color: #6c757d;
+  max-width: 600px;
+}
+
+/* Card Structure */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Medical Record Section */
+.mt-4 {
+  border-top: 1px solid #ddd;
+  margin-top: 15px;
+  padding-top: 15px;
+}
+
+.mt-4 h5 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Buttons */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.buttons-container .btn {
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+.btn-info:hover {
+  background-color: #117a8b;
+}

@@ -8,7 +8,36 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deep shadow for depth */
   animation: fadeIn 1s ease-out, slideInFromBottom 1s ease-out; /* Enhanced animations */
 }
-
+/* Heading */
+.heading {
+  text-align: center;
+  margin: 0 auto;
+  color: #2c3e50; /* Darker shade for text */
+  margin: 0;
+  padding: 10px 20px;
+  border: 2px solid #d9e2ec;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 103px;
+  left: 28px;
+  padding: 8px 12px;
+  background-color: #1E5162;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.back-button:hover {
+  background-color: #2180a0;
+  transform: scale(1.05);
+}
 /* Heading Styling */
 h2 {
   text-align: center;
@@ -72,34 +101,53 @@ h2 {
   animation: fadeIn 1s ease-out, zoomIn 1s ease-out; /* Zoom-in effect for a fresh feel */
 }
 
-/* Cancel Button Styling */
-.btn-cancel {
-  background-color: #e74c3c; /* Red background for cancel */
-  color: white; /* White text */
-  border: none;
-  padding: 10px 18px;
-  font-size: 1.1rem;
-  border-radius: 50px; /* Rounded button */
+/* Container styling for buttons */
+.appointment-actions {
+  display: flex;
+  gap: 10px; /* Adds space between buttons */
+  justify-content: flex-end; /* Align buttons to the right */
+  margin-top: 15px;
+}
+
+/* General button styles */
+.appointment-actions .btn {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smoother transitions */
-  margin-left: 12px;
-  animation: bounceIn 1s ease-out, fadeInUp 1s ease-out; /* Bounce-in + fade-in effect for button */
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
 }
 
-.btn-cancel:hover {
-  background-color: #c0392b; /* Darker red when hovering */
-  transform: scale(1.05); /* Slight grow effect */
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Elevated shadow effect */
+/* Edit button styles */
+.appointment-actions .btn-edit {
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: #fff; /* White text */
 }
 
-.btn-cancel:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 8px rgba(231, 76, 60, 0.8); /* Glow effect on focus */
+.appointment-actions .btn-edit:hover {
+  background-color: #0056b3; /* Darker blue for hover effect */
+  transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-.btn-cancel:active {
-  background-color: #9b2d2b; /* Even darker red on click */
-  transform: scale(1); /* Reset scale on click */
+/* Cancel button styles */
+.appointment-actions .btn-cancel {
+  background-color: #dc3545; /* Bootstrap danger red */
+  color: #fff; /* White text */
+}
+
+.appointment-actions .btn-cancel:hover {
+  background-color: #a71d2a; /* Darker red for hover effect */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+.appointment-actions .btn-view-prescription{
+  background-color: #1E5162;
+  color: white;
+}
+.appointment-actions .btn-view-prescription:hover {
+  background-color: #113c4b;
+  transform: scale (1.12);
 }
 
 /* Responsive Design for Smaller Screens */
@@ -122,7 +170,7 @@ h2 {
 }
 
 /* Keyframe Animations */
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   0% {
     opacity: 0;
   }
@@ -140,9 +188,9 @@ h2 {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
-@keyframes slideInFromTop {
+/* @keyframes slideInFromTop {
   0% {
     opacity: 0;
     transform: translateY(-30px);
@@ -151,9 +199,9 @@ h2 {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
-@keyframes slideInFromLeft {
+/* @keyframes slideInFromLeft {
   0% {
     opacity: 0;
     transform: translateX(-30px);
@@ -162,9 +210,9 @@ h2 {
     opacity: 1;
     transform: translateX(0);
   }
-}
+} */
 
-@keyframes slideInFromRight {
+/* @keyframes slideInFromRight {
   0% {
     opacity: 0;
     transform: translateX(30px);
@@ -173,9 +221,9 @@ h2 {
     opacity: 1;
     transform: translateX(0);
   }
-}
+} */
 
-@keyframes zoomIn {
+/* @keyframes zoomIn {
   0% {
     opacity: 0;
     transform: scale(0.8);
@@ -207,4 +255,4 @@ h2 {
   }
 }
 
-
+ */

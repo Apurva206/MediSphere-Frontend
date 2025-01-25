@@ -1,6 +1,6 @@
 import { Component,inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute  } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -13,11 +13,13 @@ import { CommonModule } from '@angular/common';
 })
 export class PatientBookAppointmentComponent {
   appointment = {
+    appointmentId: '', // Add appointmentId for editing purposes
     appointmentDate: '',
-    status: '',
+    status: 'scheduled',
     symptoms: '',
     consultationNotes: '',
-    doctorId: ''  // doctorId received from the user selection in the form
+    doctorId: '',  // doctorId received from the user selection in the form
+    slot: ''
   };
 
   role: string = '';
@@ -31,12 +33,24 @@ export class PatientBookAppointmentComponent {
   doctors: any[] = [];
   selectedDoctorId: string = '';
 
+  // Predefined slots
+  allSlots: string[] = [
+    '9:00 AM - 10:00 AM',
+    '10:00 AM - 11:00 AM',
+    '11:00 AM - 12:00 PM',
+    '1:00 PM - 2:00 PM',
+    '2:00 PM - 3:00 PM',
+    '3:00 PM - 4:00 PM',
+  ];
+  availableSlots: string[] = [];
+  appointments: any[] = [];
+
   private apiUrl = 'https://localhost:7159/api/Appointments'; // Replace with your actual API URL
   private doctorApiUrl = 'https://localhost:7159/api/Doctor';
 
   http = inject(HttpClient);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const token = localStorage.getItem('authToken');
@@ -51,34 +65,111 @@ export class PatientBookAppointmentComponent {
         console.error('Error decoding token:', error);
       }
     }
-    
+    // Check if editing an appointment
+    this.route.queryParams.subscribe((params) => {
+      console.log('Query Params:', params); // Debugging
+      if (params['appointmentId']) {
+        this.loadAppointment(params['appointmentId']);
+      }
+    });
     // Load specialties on component initialization
     this.fetchSpecialties();
+    this.fetchAppointments();
   } 
+  
+  loadAppointment(appointmentId: string): void {
+    const token = localStorage.getItem('authToken'); // Retrieve the token from localStorage
+    if (!token) {
+      console.error('Authorization token is missing. Redirecting to login.');
+      alert('Session expired. Please log in again.');
+      this.router.navigate(['/login']); // Redirect to login if token is missing
+      return;
+    }
+  
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    console.log('Token being sent:', token); // Debugging token
+  
+    this.http.get<any>(`${this.apiUrl}/${appointmentId}`, { headers }).subscribe(
+      (appointment) => {
+        console.log('API Response for appointment:', appointment); // Debugging API response
+        this.appointment = {
+          appointmentId: appointment.appointmentId,
+          appointmentDate: appointment.appointmentDate,
+          status: appointment.status,
+          symptoms: appointment.symptoms,
+          consultationNotes: appointment.consultationNotes,
+          doctorId: appointment.doctorId,
+          slot: appointment.slot,
+        };
+        this.selectedSpecialty = appointment.specialty; // Populate selected specialty
+        this.selectedDoctorId = appointment.doctorId; // Populate selected doctorId
+        this.filterAvailableSlots(); // Load available slots for editing
+      },
+      (error) => {
+        console.error('Error loading appointment:', error); // Debugging API error
+        if (error.status === 401) {
+          console.error('Unauthorized access. Possible token issue.');
+          alert('Session expired or unauthorized access. Please log in again.');
+          this.router.navigate(['/login']); // Redirect to login on unauthorized
+        } else {
+          alert('Error loading the appointment. Please try again later.');
+        }
+      }
+    );
+  }
+  
   fetchSpecialties(): void {
     this.http.get<any[]>(`${this.doctorApiUrl}`).subscribe(
       (doctors) => {
-        console.log('Doctors fetched:', doctors); // Log the API response
-        if (doctors && Array.isArray(doctors)) {
-          // Ensure each doctor has a 'specialty' property
-          const specialties = doctors
-            .filter(doctor => doctor.specialty) // Filter out doctors without specialties
-            .map(doctor => doctor.specialty);
-          this.specialty = [...new Set(specialties)]; // Use Set to get distinct specialties
-          console.log('Extracted specialties:', this.specialty); // Log the extracted specialties
-        } else {
-          console.error('Unexpected API response structure:', doctors);
-        }
+        this.specialty = [...new Set(doctors.map(doctor => doctor.specialty))];
+      },
+      (error) => {
+        console.error('Error fetching specialties:', error);
+      }
+    );
+  }
+
+  onSpecialtyChange(): void {
+    this.http.get<any[]>(`${this.doctorApiUrl}?specialty=${this.selectedSpecialty}`).subscribe(
+      (doctors) => {
+        this.doctors = doctors.filter(doctor => doctor.specialty === this.selectedSpecialty);
       },
       (error) => {
         console.error('Error fetching doctors:', error);
       }
     );
   }
+  onDoctorChange(): void {
+    console.log('Selected Doctor ID:', this.selectedDoctorId); // Debugging
+    if (this.selectedDoctorId) {
+      this.filterAvailableSlots();
+    }
+  }
+  
+  filterAvailableSlots(): void {
+    console.log('Filtering slots for doctor ID:', this.selectedDoctorId); // Debugging
+    const bookedSlots = this.appointments
+      .filter((appointment) => appointment.doctorId === this.selectedDoctorId)
+      .map((appointment) => appointment.slot);
+  
+    console.log('Booked Slots:', bookedSlots); // Debugging
+    this.availableSlots = this.allSlots.filter((slot) => !bookedSlots.includes(slot));
+    console.log('Available Slots:', this.availableSlots); // Debugging
+  }
+  
 
-  onSpecialtyChange(): void {
-    // When a specialty is selected, fetch doctors with that specialty
-    this.fetchDoctorIdBySpecialty(this.selectedSpecialty);
+  fetchAppointments(): void {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    this.http.get<any[]>(this.apiUrl, {headers}).subscribe(
+      (appointments) => {
+        this.appointments = appointments;
+        this.filterAvailableSlots();
+      },
+      (error) => {
+        console.error('Error fetching appointments:', error);
+      }
+    );
   }
 
   fetchDoctorIdBySpecialty(specialty: string): void {
@@ -127,6 +218,37 @@ export class PatientBookAppointmentComponent {
 
 
   // Handle form submission
+  // onSubmit() {
+  //   if (!this.UserId) {
+  //     console.error('User ID is not found');
+  //     return;
+  //   }
+
+  //   if (this.role === 'Patient') {
+  //     const appointmentData = {
+  //       ...this.appointment,
+  //       patientId: this.patientId,  // Attach patientId from the decoded token
+  //       doctorId: this.appointment.doctorId,  // The doctorId selected by the patient
+  //     };
+
+  //     // Call the backend API to submit the appointment data
+  //   const token = localStorage.getItem('authToken');  // Retrieve the token
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  //     this.http.post(this.apiUrl, appointmentData, { headers }).subscribe(
+  //       (response:any) => {
+  //         console.log('Appointment successfully created!', response);
+  //         alert('Appointment added successfully!');
+  //         this.router.navigate(['/app-patient-appointment']);  // Redirect after successful submission
+
+  //       },
+  //       (error) => {
+  //         console.error('Error creating appointment:', error);
+  //       }
+  //     );
+  //   } else {
+  //     console.error('Only patients can create appointments');
+  //   }
+  // }
   onSubmit() {
     if (!this.UserId) {
       console.error('User ID is not found');
@@ -136,26 +258,43 @@ export class PatientBookAppointmentComponent {
     if (this.role === 'Patient') {
       const appointmentData = {
         ...this.appointment,
-        patientId: this.patientId,  // Attach patientId from the decoded token
-        doctorId: this.appointment.doctorId,  // The doctorId selected by the patient
+        patientId: this.patientId,
+        doctorId: this.selectedDoctorId, // Use the selected doctorId
       };
 
-      // Call the backend API to submit the appointment data
-    const token = localStorage.getItem('authToken');  // Retrieve the token
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      this.http.post(this.apiUrl, appointmentData, { headers }).subscribe(
-        (response:any) => {
-          console.log('Appointment successfully created!', response);
-          alert('Appointment added successfully!');
-          this.router.navigate(['/app-patient-appointment']);  // Redirect after successful submission
+      const token = localStorage.getItem('authToken'); // Retrieve the token
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-        },
-        (error) => {
-          console.error('Error creating appointment:', error);
-        }
-      );
+      if (this.appointment.appointmentId) {
+        // Editing existing appointment
+        this.http.put(`${this.apiUrl}/${this.appointment.appointmentId}`, appointmentData, { headers }).subscribe(
+          (response: any) => {
+            console.log('Appointment successfully updated!', response);
+            alert('Appointment updated successfully!');
+            this.router.navigate(['/app-patient-appointment']); // Redirect after successful update
+          },
+          (error) => {
+            console.error('Error updating appointment:', error);
+          }
+        );
+      } else {
+        // Creating new appointment
+        this.http.post(this.apiUrl, appointmentData, { headers }).subscribe(
+          (response: any) => {
+            console.log('Appointment successfully created!', response);
+            alert('Appointment added successfully!');
+            this.router.navigate(['/app-patient-appointment']); // Redirect after successful submission
+          },
+          (error) => {
+            console.error('Error creating appointment:', error);
+          }
+        );
+      }
     } else {
-      console.error('Only patients can create appointments');
+      console.error('Only patients can create or edit appointments');
     }
+  }
+  navigateToDashboard(): void {
+    this.router.navigate(['/app-patient-dashboard']); // Replace with your actual route
   }
 }

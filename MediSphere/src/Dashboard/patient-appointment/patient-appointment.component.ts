@@ -112,7 +112,7 @@ fetchDoctorDetails(doctorId: number, appointment: any): void {
   this.http.get<any>(`${this.doctorApiUrl}/${doctorId}`, { headers }).subscribe(
     (doctor) => {
       if (doctor) {
-        appointment.doctorName = doctor.name; // Add doctor name to the appointment
+        appointment.doctorName = doctor.fullName; // Add doctor name to the appointment
         appointment.doctorSpecialty = doctor.specialty; // Add doctor specialty to the appointment
         console.log('Doctor details fetched for appointment:', doctor);
       } else {
@@ -123,6 +123,14 @@ fetchDoctorDetails(doctorId: number, appointment: any): void {
       console.error('Error fetching doctor details:', error);
     }
   );
+}
+navigateToDashboard(): void {
+  this.router.navigate(['/app-patient-dashboard']); // Replace with your actual route
+}
+navigateToRecords(appointmentId: number): void {
+  this.router.navigate(['/app-patient-record'], {
+    queryParams: { appointmentId: appointmentId }
+  });
 }
   cancelAppointment(appointmentId: number): void {
     const confirmation = confirm('Are you sure you want to cancel this appointment?');
@@ -141,5 +149,10 @@ fetchDoctorDetails(doctorId: number, appointment: any): void {
         }
       );
     }
+  }
+  openEditForm(appointment: any): void {
+    this.router.navigate(['/app-patient-book-appointment'], {
+      queryParams: { appointmentId: appointment.appointmentId }
+    });
   }
 }

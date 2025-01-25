@@ -1,4 +1,10 @@
-<br><br><br><br><br>
+<br><br><br><br>
+<div class="heading">
+  <h2>
+   <button class="back" (click)="navigateToDashboard()">&#8592; Back</button>
+   <!-- <fa-icon [icon]="faNotesMedical" style = "margin-right: 10px; right: 2px;"></fa-icon> -->
+   Schedule Your Consultation</h2>
+</div>
 <div class="container">
     
     <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
@@ -13,21 +19,54 @@
   </select>
 </div>
 
+<!-- Doctor Dropdown -->
+<div class="form-group" *ngIf="selectedSpecialty">
+  <label for="doctor">Doctor:</label>
+  <select
+    id="doctor"
+    class="form-control"
+    [(ngModel)]="selectedDoctorId"
+    name="doctor"
+    required
+  >
+    <option *ngFor="let doctor of doctors" [value]="doctor.doctorId">
+      {{ doctor.fullName }}
+    </option>
+  </select>
+</div>
+
         <!-- <div class="aform-group">
             <label for="doctorId" >Enter Your ID:</label>
             <input type="number" [(ngModel)]="appointment.doctorId" name="doctorId" placeholder="Enter your ID">
           </div> -->
+      
       <div class="form-group">
         <label for="appointmentDate">Appointment Date:</label>
         <input type="datetime-local" id="appointmentDate" class="form-control" [(ngModel)]="appointment.appointmentDate" name="appointmentDate" required>
       </div>
+  <!-- Slot Selection -->
+  <div class="form-group" *ngIf="selectedDoctorId">
+    <label for="slot">Available Slots:</label>
+    <select
+      id="slot"
+      class="form-control"
+      [(ngModel)]="appointment.slot"
+      name="slot"
+      required
+    >
+      <option *ngIf="availableSlots.length === 0" disabled>No slots available</option>
+      <option *ngFor="let slot of availableSlots" [value]="slot">
+        {{ slot }}
+      </option>
+    </select>
+  </div>
   
       <div class="form-group">
         <label for="status">Status:</label>
         <select id="status" class="form-control" [(ngModel)]="appointment.status" name="status" required>
           <option value="scheduled">Scheduled</option>
-          <option value="completed">Completed</option>
-          <option value="cancelled">Cancelled</option>
+          <!-- <option value="completed">Completed</option>
+          <option value="cancelled">Cancelled</option> -->
         </select>
       </div>
   
@@ -41,7 +80,7 @@
         <textarea id="consultationNotes" class="form-control" [(ngModel)]="appointment.consultationNotes" name="consultationNotes" rows="4" required></textarea>
       </div>  -->
   
-      <button type="submit" class="btn btn-primary" [disabled]="!appointmentForm.form.valid">Submit</button>
+      <button type="submit" class="submit-button" [disabled]="!appointmentForm.form.valid">Submit</button>
     </form>
   </div>
   

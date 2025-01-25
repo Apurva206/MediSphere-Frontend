@@ -1,18 +1,30 @@
 <br><br><br><br>
+<div class="heading">
+   <h2>
+    <button class="back-button" (click)="navigateToDashboard()">&#8592; Back</button>
+    <!-- <fa-icon [icon]="faNotesMedical" style = "margin-right: 10px; right: 2px;"></fa-icon> -->
+    Personal Health Records</h2>
+</div>
 <div *ngIf="medicalRecords.length === 0" class="alert alert-info">
     No medical records found.
   </div>
   
   <div *ngFor="let record of medicalRecords" class="card mb-3">
     <div class="card-body">
-      <h5 class="card-title">Consultation Date: {{ record.consultationDate | date }}</h5>
+      <h5 class="card-title">Patient Name: {{ Username }}</h5>
+      <p><strong>Record ID:</strong> {{ medicalRecord.recordId }}</p>
+  <p><strong>Appointment ID:</strong> {{ medicalRecord.appointmentId }}</p>
+      <p><strong>Doctor Name:</strong> {{ record.doctorName }}</p>
+      <p><strong>Speciality:</strong> {{ record.doctorSpecialty }}</p>
+      <p><strong>Consultation Date:</strong> {{ record.consultationDate | date }}</p>
       <p><strong>Symptoms:</strong> {{ record.symptoms }}</p>
       <p><strong>Treatment Plan:</strong> {{ record.treatmentPlan }}</p>
-      <p><strong>Prescribed Tests:</strong> {{ record.prescribedTests?.join(', ') }}</p>
-      <button
-        class="btn btn-primary">
-        View Prescription
-      </button>
+      <p><strong>Prescribed Tests:</strong> {{ record.prescribedTests }}</p>
+      <div class="buttons-container">
+        <button class="btn btn-primary"(click) = "viewPrescription(record.recordId)">View Prescription</button>
+        <button class="btn btn-secondary"(click)="downloadReport(record)">Download Report</button>
+        <!-- <button class="btn btn-info" >View Appointment</button> -->
+      </div>
     </div>
   </div>
   

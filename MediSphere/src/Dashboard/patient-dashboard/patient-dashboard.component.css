@@ -1,4 +1,69 @@
 /* The side navigation menu */
+.welcome-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.welcome-section p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: white;
+  margin: 10px 0;
+}
+
+/* Container for the upload section */
+.image-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Label wrapping the profile image and input */
+.upload-label {
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  text-align: center;
+  border: 3px solid #35978d; /* Border around the circle */
+  border-radius: 50%; /* Makes the container circular */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-label:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+/* Profile Image inside the label */
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fills the circle */
+  border-radius: 50%; /* Keeps the circular shape */
+}
+
+/* Hidden file input */
+#profileImage {
+  display: none;
+}
+
+/* "Choose File" text beneath the circle */
+.image-upload::after {
+  /* content: "Choose File"; */
+  margin-top: 10px;
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+input[type="file"] {
+  display: none;
+}
 .sidebar {
     margin: 0;
     padding: 0;
@@ -57,30 +122,24 @@
       float: none;
     }
   }
-
-  /* General styles for the dashboard container */
-.dashboard-container {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f4f7fc;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard-container h1 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Form styling */
+  
+  
+  .dashboard-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #296E85;
+    margin-bottom: 20px; /* Adds space below the heading */
+    text-align: center; /* Ensures the text is centered */
+  }
+  /* Form */
 form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 form div {
@@ -88,102 +147,122 @@ form div {
   flex-direction: column;
 }
 
-label {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 8px;
+form label {
+  font-size: 16px;
+  color: #1E5162;
+  margin-bottom: 5px;
 }
 
-input, select, textarea {
-  font-size: 1rem;
+form input,
+form textarea {
+  font-size: 16px;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
+  border-radius: 5px;
   transition: border-color 0.3s ease;
 }
 
-input:focus, select:focus, textarea:focus {
-  border-color: #5b9bd5;
+form input:focus,
+form textarea:focus {
+  border-color: #3a4d66;
+  outline: none;
 }
 
-textarea {
-  resize: vertical;
-  min-height: 120px;
+/* Buttons container */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
 }
 
-button {
-  padding: 12px 24px;
-  background-color: #4CAF50;
+/* Buttons container */
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Button Styling */
+form button {
+  background-color: #1E5162;
   color: white;
-  font-size: 1.1rem;
   border: none;
-  border-radius: 4px;
+  padding: 8px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  align-self: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 121px;
+  height: 35px;
 }
 
-button:hover {
-  background-color: #45a049;
+form button:hover {
+  background-color: #0e2f3a;
+  transform: scale(1.05);
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+form button:active {
+  transform: scale(1);
+}
+
+form button.logout-btn {
+  background-color: #f44336;
+}
+
+form button.logout-btn:hover {
+  background-color: #d32f2f;
+}
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  /* Make the form input fields larger and more accessible on smaller screens */
-  .dashboard-container {
-    width: 95%;
+  .sidebar {
+    width: 200px;
+  }
+
+  .content {
+    margin-left: 220px;
     padding: 15px;
-  }
-
-  .dashboard-container h1 {
-    font-size: 1.8rem;
-  }
-
-  form {
-    gap: 12px;
-  }
-
-  input, select, textarea {
-    font-size: 1.1rem;
-    padding: 12px;
-  }
-
-  button {
-    padding: 12px 20px;
-    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  /* Adjustments for very small screens */
-  .dashboard-container {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .sidebar {
     width: 100%;
-    padding: 10px;
+    height: auto;
+    position: relative;
+    box-shadow: none;
   }
 
-  .dashboard-container h1 {
-    font-size: 1.5rem;
-  }
-
-  form {
-    gap: 10px;
-  }
-
-  input, select, textarea {
-    font-size: 1.1rem;
-    padding: 10px;
-  }
-
-  button {
-    width: 100%; /* Make the button full width on very small screens */
-    padding: 14px;
-    font-size: 1rem;
+  .content {
+    margin-left: 0;
+    width: 100%;
   }
 }

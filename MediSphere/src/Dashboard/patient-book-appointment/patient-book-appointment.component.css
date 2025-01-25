@@ -1,3 +1,32 @@
+.heading {
+  text-align: center;
+  margin: 0 auto;
+  color: #2c3e50; /* Darker shade for text */
+  margin: 0;
+  padding: 10px 20px;
+  border: 2px solid #d9e2ec;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Back Button */
+.back {
+  position: absolute;
+  top: 103px;
+  left: 28px;
+  padding: 8px 12px;
+  background-color: #1E5162;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.back:hover {
+  background-color: #2180a0;
+  transform: scale(1.05);
+}
 /* General styles */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -14,31 +43,6 @@ body {
   transition: right 0.5s ease;
 }
 
-/* Keyframe for scaling pulse animation */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Gradient background animation */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 form {
   max-width: 600px;
@@ -103,7 +107,7 @@ textarea {
   min-height: 120px;
 }
 
-button {
+.submit-button  {
   background: linear-gradient(to right, #43A6C6, #2575fc);
   color: white;
   padding: 12px 20px;
@@ -117,7 +121,7 @@ button {
   animation: buttonHover 1s ease infinite; /* Added animation to button */
 }
 
-button:hover {
+.submit-button :hover {
   background: linear-gradient(to right, #37A0B5, #6a11cb);
   transform: scale(1.03);
 }
@@ -128,7 +132,7 @@ button:disabled {
 }
 
 /* Button hover animation */
-@keyframes buttonHover {
+/* @keyframes buttonHover {
   0% {
     background: linear-gradient(to right, #43A6C6, #2575fc);
   }
@@ -138,7 +142,7 @@ button:disabled {
   100% {
     background: linear-gradient(to right, #43A6C6, #2575fc);
   }
-}
+} */
 
 /* Media Queries for responsiveness */
 

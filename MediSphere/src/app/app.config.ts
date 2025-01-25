@@ -15,6 +15,9 @@ import { PatientRecordComponent } from '../Dashboard/patient-record/patient-reco
 import { PatientPrescriptionComponent } from '../Dashboard/patient-prescription/patient-prescription.component';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password/forgot-password.component';
 import { PatientBookAppointmentComponent } from '../Dashboard/patient-book-appointment/patient-book-appointment.component';
+import { DoctorAppointmentComponent } from '../Dashboard/doctor-appointment/doctor-appointment.component';
+import { DoctorRecordComponent } from '../Dashboard/doctor-record/doctor-record.component';
+import { DoctorPrescriptionComponent } from '../Dashboard/doctor-prescription/doctor-prescription.component';
 
 const routes : Routes =[
   {
@@ -55,7 +58,21 @@ const routes : Routes =[
     component: DoctorDashboardComponent,
     canActivate:[authGuard]
   },
-  
+  {
+    path:'app-doctor-appointment',
+    component: DoctorAppointmentComponent,
+    canActivate:[authGuard]
+  },
+  {
+    path:'app-doctor-record',
+    component: DoctorRecordComponent,
+    canActivate:[authGuard]
+  },
+  {
+    path:'app-doctor-prescription',
+    component: DoctorPrescriptionComponent,
+    canActivate:[authGuard]
+  },
 
   {
     path: 'app-header',

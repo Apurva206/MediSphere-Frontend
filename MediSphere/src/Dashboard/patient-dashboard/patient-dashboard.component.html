@@ -1,6 +1,27 @@
 <br><br><br><br>
 <!-- The sidebar -->
 <div class="sidebar">
+
+  <div class="image-upload">
+    <label for="profileImage" class="upload-label">
+      <img
+        [src]="profileImage || 'assets/default-profile.png'"
+        alt="Profile Image"
+        class="profile-image"
+      />
+      <input
+        type="file"
+        id="profileImage"
+        (change)="onImageUpload($event)"
+        accept="image/*"
+      />
+    </label>
+  </div>
+    <div class="welcome-section">
+      <p>Welcome back,</p>
+      <p><strong>{{ Username }}</strong>!</p>
+  </div>
+
     <a class="nav-link" routerLink="/app-patient-dashboard"  routerLinkActive="active">
     <fa-icon [icon]="faAddressCard" size= "2x" style = "margin-right: 10px; right: 2px;"></fa-icon>Profile</a>
     
@@ -14,13 +35,13 @@
     <fa-icon [icon]="faNotesMedical" size= "2x"style = "margin-right: 10px; right: 2px;"></fa-icon>Medical Records</a>
     
     <a class="nav-link" routerLink="/app-patient-prescription" routerLinkActive="active">
-    <fa-icon [icon]="faFile" size= "2x"style = "margin-right: 10px; right: 2px;"></fa-icon>Prescriptions</a>
+    <fa-icon [icon]="faFile" size= "2x"style = "margin-right: 10px; right: 2px;"></fa-icon>My Prescriptions</a>
   </div>
   
   <!-- Page content -->
   <div class="content">
     <div class="dashboard-container">
-      <h1>Patient Dashboard</h1>
+      <h1><strong>Update Your Details</strong></h1>
       <form (ngSubmit)="onSubmit()">
         <!-- <div>
           <label for="userId">User ID:</label>
@@ -90,6 +111,7 @@
           ></textarea>
         </div>
         <button type="submit">Save Profile</button>
+        <button type="logout"(click)="logout()">Logout</button>
       </form>
     </div>
     

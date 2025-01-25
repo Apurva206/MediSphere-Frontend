@@ -1,21 +1,31 @@
-<br><br><br>
+<br><br><br><br>
+<div class="heading">
+  <h2>
+   <button class="back-button" (click)="navigateToDashboard()">&#8592; Back</button>
+   <!-- <fa-icon [icon]="faNotesMedical" style = "margin-right: 10px; right: 2px;"></fa-icon> -->
+   Appointment Logs</h2>
+</div>
 <div class="appointment-container">
-    <h2>Appointments History</h2>
+    <!-- <h2>Appointments History</h2> -->
     <div *ngIf="appointments.length === 0" class="no-appointments">
       <p>No appointments found.</p>
     </div>
     <div *ngFor="let appointment of appointments" class="appointment-card">
       <h3>Appointment ID: {{ appointment.appointmentId }}</h3>
-      <!-- <p><strong>Doctor Name:</strong> {{ appointment.doctorName }}</p> -->
+      <p><strong>Doctor Name:</strong> {{ appointment.doctorName }}</p>
       <p><strong>Doctor Speciality:</strong> {{ appointment.doctorSpecialty }}</p>
-      <p><strong>Appointment Date:</strong> {{ appointment.appointmentDate }}</p>
+      <p><strong>Appointment Date:</strong> {{ appointment.appointmentDate | date }}</p>
+      <p><strong>Time:</strong> {{ appointment.slot }}</p>
       <p><strong>Symptoms:</strong> {{ appointment.symptoms }}</p>
       <p><strong>Status:</strong> {{ appointment.status }}</p>
-      <p><strong>Consultation Notes:</strong> {{ appointment.consultationNotes || 'N/A' }}</p>
+      <!-- <p><strong>Consultation Notes:</strong> {{ appointment.consultationNotes || 'N/A' }}</p> -->
       <div class="appointment-actions">
         <!-- Edit and Cancel buttons -->
-      <!-- <button (click)="editAppointment(appointment)" class="btn btn-edit">Edit</button> -->
+        <button (click)="openEditForm(appointment)" class="btn btn-edit">Edit</button>
       <button (click)="cancelAppointment(appointment.appointmentId)" class="btn btn-cancel">Cancel</button>
+      <button *ngIf="appointment.status === 'completed'" (click)="navigateToRecords(appointment.appointmentId)" class="btn btn-view-prescription">
+        View Medical Report
+      </button>
       </div>
     </div>
   </div>

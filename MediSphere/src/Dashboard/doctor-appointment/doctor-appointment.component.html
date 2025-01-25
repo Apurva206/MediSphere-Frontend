@@ -1,1 +1,44 @@
-<p>doctor-appointment works!</p>
+<div class="container">
+    <h2>Appointments</h2>
+    <div class="row">
+      <!-- Loop through each appointment to display in a card -->
+      <div class="col-md-4 mb-3" *ngFor="let appointment of appointments">
+        <div class="card">
+          <div class="card-body">
+            <!-- Card Header -->
+            <h5 class="card-title">
+              Appointment ID: {{ appointment.AppointmentId }}
+            </h5>
+  
+            <!-- Card Content -->
+            <p><strong>Date:</strong> {{ appointment.AppointmentDate | date }}</p>
+            <p><strong>Status:</strong> 
+              <span 
+                [ngClass]="{
+                  'text-success': appointment.Status === 'completed',
+                  'text-warning': appointment.Status === 'scheduled',
+                  'text-danger': appointment.Status === 'pending'
+                }"
+              >
+                {{ appointment.Status }}
+              </span>
+            </p>
+            <p><strong>Symptoms:</strong> {{ appointment.Symptoms }}</p>
+            <p><strong>Consultation Notes:</strong> 
+              {{ appointment.ConsultationNotes || 'N/A' }}
+            </p>
+  
+            <!-- Action Buttons -->
+            <button
+              class="btn btn-success btn-sm w-100"
+              (click)="markCompleted(appointment.AppointmentId)"
+              [disabled]="appointment.Status === 'completed'"
+            >
+              Mark as Completed
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
