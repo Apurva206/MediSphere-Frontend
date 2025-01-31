@@ -1,35 +1,291 @@
-.card {
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  color: #0078d7;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+/* Buttons */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.button {
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.button:first-of-type {
+  background-color: #0078d7;
+  color: white;
+}
+
+.button:first-of-type:hover {
+  background-color: #005fa3;
+}
+
+.button:last-of-type {
+  background-color: #6c63ff;
+  color: white;
+}
+
+.button:last-of-type:hover {
+  background-color: #524af1;
+}
+
+/* Loading, Error, and No Appointments */
+.loading, .error, .no-appointments {
+  text-align: center;
+  margin: 20px 0;
+  color: #666;
+  font-size: 18px;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+.no-appointments {
+  color: #888;
+}
+
+/* Cards Container */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+/* Appointment Card */
+.appointment-card {
+  background-color: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  width: 300px;
+  padding: 54px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInCard 0.5s ease-in-out;
 }
 
-.card:hover {
+.appointment-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
-.card-title {
-  font-size: 1.25rem;
+/* Card Header */
+.card-header {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+
+.card-header h3 {
+  color: #0078d7;
+  font-size: 20px;
+  margin: 0 0 5px;
   font-weight: bold;
 }
 
+.card-header .date {
+  color: #888;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* Card Body */
 .card-body p {
-  margin: 0.5rem 0;
+  margin: 12px 0;
+  font-size: 14px;
+  color: #444;
+  font-weight: normal;
 }
 
-.text-success {
-  color: green;
+.status-dropdown {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  transition: background-color 0.2s ease;
 }
 
-.text-warning {
-  color: orange;
+.status-dropdown:focus {
+  background-color: #eef6ff;
 }
 
-.text-danger {
-  color: red;
+/* Background color for Scheduled */
+.status-scheduled {
+  background-color: #fff3cd; /* Light Yellow */
+  color: #856404;
 }
 
-.btn {
-  margin-top: 1rem;
+/* Background color for Completed */
+.status-completed {
+  background-color: #d4edda; /* Light Green */
+  color: #155724;
+}
+
+.consultation-notes {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  transition: background-color 0.3s ease;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.consultation-notes:focus {
+  background-color: #eef6ff;
+}
+
+.consultation-notes[readonly] {
+  background-color: #e8e8e8;
+  cursor: not-allowed;
+}
+
+/* Card Footer */
+.card-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.save-button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.save-button:disabled {
+  background-color: #b0e57c; /* Light green when disabled */
+  cursor: not-allowed;
+}
+
+.toggle{
+  background-color: #1E5162;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 60%;
+}
+.toggle:hover{
+  background-color: #0b2730;
+  transform: scale(1.05);
+}
+
+.medical{
+  background-color: #1E5162;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 60%;
+}
+
+.medical:hover{
+  background-color: #09313f;
+  transform: scale(1.05);
+}
+
+.cancel {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+}
+
+.cancel:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -1,44 +1,88 @@
+<br><br><br><br>
 <div class="container">
-    <h2>Appointments</h2>
-    <div class="row">
-      <!-- Loop through each appointment to display in a card -->
-      <div class="col-md-4 mb-3" *ngFor="let appointment of appointments">
-        <div class="card">
-          <div class="card-body">
-            <!-- Card Header -->
-            <h5 class="card-title">
-              Appointment ID: {{ appointment.AppointmentId }}
-            </h5>
-  
-            <!-- Card Content -->
-            <p><strong>Date:</strong> {{ appointment.AppointmentDate | date }}</p>
-            <p><strong>Status:</strong> 
-              <span 
-                [ngClass]="{
-                  'text-success': appointment.Status === 'completed',
-                  'text-warning': appointment.Status === 'scheduled',
-                  'text-danger': appointment.Status === 'pending'
-                }"
-              >
-                {{ appointment.Status }}
-              </span>
-            </p>
-            <p><strong>Symptoms:</strong> {{ appointment.Symptoms }}</p>
-            <p><strong>Consultation Notes:</strong> 
-              {{ appointment.ConsultationNotes || 'N/A' }}
-            </p>
-  
-            <!-- Action Buttons -->
-            <button
-              class="btn btn-success btn-sm w-100"
-              (click)="markCompleted(appointment.AppointmentId)"
-              [disabled]="appointment.Status === 'completed'"
-            >
-              Mark as Completed
-            </button>
-          </div>
+  <h2 class="header">Doctor's Appointments</h2>
+
+  <!-- Buttons to toggle views -->
+  <div class="button-container">
+    <button (click)="getAppointments()" class="button">Show All Appointments</button>
+    <button (click)="fetchAppointmentsForToday()" class="button">Show Today's Appointments</button>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="loading">
+    <p>Loading appointments...</p>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="appointments.length" class="cards-container">
+    <div *ngFor="let appointment of appointments" class="appointment-card">
+      <div class="card-header">
+        <h3>Appointment ID: {{ appointment.appointmentId }}</h3>
+        <p class="date">{{ appointment.appointmentDate | date: 'medium' }}</p>
+      </div>
+      <div class="card-body">
+        <p><strong>Symptoms:</strong> {{ appointment.symptoms }}</p>
+        <p>
+          <strong>Status:</strong>
+          <select
+            class="status-dropdown"
+            [ngClass]="{
+              'status-scheduled': appointment.status === 'scheduled',
+              'status-completed': appointment.status === 'completed'
+            }"
+            [value]="appointment.status"
+            (change)="updateAppointmentStatus($event, appointment)"
+          >
+            <option value="scheduled">🟡 Scheduled</option>
+            <option value="completed">✅ Completed</option>
+          </select>
+        </p>
+
+        <button (click)="toggleNotes(appointment)" class="toggle">Consultation Notes</button>
+        <div *ngIf="appointment.showNotes">
+          <textarea
+            rows="4"
+            class="consultation-notes"
+            [(ngModel)]="appointment.consultationNotes"
+            [readonly]="appointment.status !== 'completed'"
+            placeholder="Enter consultation notes here..."
+          ></textarea>
         </div>
+        <!-- <p>
+          <strong>Consultation Notes:</strong>
+          <textarea
+            rows="4"
+            class="consultation-notes"
+            [(ngModel)]="appointment.consultationNotes"
+            [readonly]="appointment.status !== 'completed'"
+            placeholder="Add notes here..."
+          ></textarea>
+        </p> -->
+      </div>
+      <button (click)="navigateToRecords(appointment.appointmentId)" class="medical">📑 View Report</button>
+      <div class="card-footer">
+        <button
+          (click)="saveAppointment(appointment)"
+          class="button save-button"
+        >
+          Save Updates
+        </button>
+        <button
+          (click)="cancelAppointment(appointment)"
+          class="cancel"
+        >
+          Cancel Appointment
+        </button>
       </div>
     </div>
   </div>
-  
+
+  <!-- No Appointments Message -->
+  <div *ngIf="!isLoading && !appointments.length" class="no-appointments">
+    <p>No appointments available.</p>
+  </div>
+</div>

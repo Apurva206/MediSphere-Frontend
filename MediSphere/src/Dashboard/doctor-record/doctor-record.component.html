@@ -1,1 +1,30 @@
-<p>doctor-record works!</p>
+<br><br><br><br>
+<div class="container">
+    <h2>📋 Medical Report</h2>
+  
+    <form (ngSubmit)="saveMedicalReport()">
+      <div class="form-group">
+        <label for="symptoms">Symptoms:</label>
+        <input type="text" id="symptoms" class="form-control" [(ngModel)]="medicalReport.symptoms" name="symptoms" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="consultationDate">Consultation Date:</label>
+        <input type="date" id="consultationDate" class="form-control" [(ngModel)]="medicalReport.consultationDate" name="consultationDate" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="treatmentPlan">Treatment Plan:</label>
+        <textarea id="treatmentPlan" class="form-control" [(ngModel)]="medicalReport.treatmentPlan" name="treatmentPlan" required></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="prescribedTests">Prescribed Tests:</label>
+        <input type="text" id="prescribedTests" class="form-control" [(ngModel)]="medicalReport.prescribedTests" name="prescribedTests">
+      </div>
+  
+      <!-- Save / Update Button -->
+      <button type="submit" class="button save-button">💾 Save Report</button>
+    </form>
+  </div>
+  

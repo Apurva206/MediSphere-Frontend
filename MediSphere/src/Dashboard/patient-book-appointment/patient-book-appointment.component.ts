@@ -279,7 +279,8 @@ export class PatientBookAppointmentComponent {
         );
       } else {
         // Creating new appointment
-        this.http.post(this.apiUrl, appointmentData, { headers }).subscribe(
+        const { appointmentId, ...newAppointmentData } = appointmentData;
+        this.http.post(this.apiUrl, newAppointmentData, { headers }).subscribe(
           (response: any) => {
             console.log('Appointment successfully created!', response);
             alert('Appointment added successfully!');

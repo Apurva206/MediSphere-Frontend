@@ -133,36 +133,7 @@ logout(): void {
   localStorage.removeItem('authToken'); // Remove the token
   this.router.navigate(['/app-login']); // Redirect to the login page
 }
-  
-  // onSubmit() {
-  //   if (!this.UserId) {
-  //     console.error('User ID is not found');
-  //     return;
-  //   }
 
-  //   if (this.role === 'Patient') {
-  //     const patientData = {
-  //       ...this.patientProfile,
-  //      patientId: this.UserId,
-  //       userId: this.UserId, // Ensure userId matches the logged-in user's ID
-  //     };
-
-  //     const token = localStorage.getItem('authToken'); // Retrieve the token
-  //     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-  //     this.http.put(`${this.apiUrl}/${this.patientId}`, patientData, { headers }).subscribe(
-  //       (response: any) => {
-  //         console.log('Patient profile created/updated successfully!', response);
-  //         alert('Profile updated successfully');
-  //       },
-  //       // (error) => {
-  //       //   console.error('Error creating/updating profile:', error);
-  //       // }
-  //     );
-  //   } else {
-  //     console.error('Only patients can access this dashboard');
-  //   }
-  // }
   onSubmit(): void {
     if (!this.UserId) {
       console.error('User ID is not found');
