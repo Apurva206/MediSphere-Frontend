@@ -1,6 +1,27 @@
 <br><br><br><br>
 <!-- The sidebar -->
 <div class="sidebar">
+
+  <div class="image-upload">
+    <label for="profileImage" class="upload-label">
+      <img
+        [src]="profileImage || 'assets/default-profile.png'"
+        alt="Profile Image"
+        class="profile-image"
+      />
+      <input
+        type="file"
+        id="profileImage"
+        (change)="onImageUpload($event)"
+        accept="image/*"
+      />
+    </label>
+  </div>
+    <div class="welcome-section">
+      <p>Welcome back,</p>
+      <p><strong>{{ Username }}</strong>!</p>
+  </div>
+
     <a class="nav-link" routerLink="/app-doctor-dashboard"  routerLinkActive="active">
     <fa-icon [icon]="faAddressCard" size= "2x" style = "margin-right: 10px; right: 2px;"></fa-icon>Profile</a>
     
@@ -87,5 +108,6 @@
           >
         </div>
         <button type="submit">Save Profile</button>
+        <button type="logout"(click)="logout()">Logout</button>
       </form>
     </div>

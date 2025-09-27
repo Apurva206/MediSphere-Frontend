@@ -80,6 +80,9 @@ export class DoctorAppointmentComponent implements OnInit{
       });
     } 
   }
+  navigateToDashboard(): void {
+    this.router.navigate(['/app-doctor-dashboard']); // Replace with your actual route
+  }
 
   updateAppointmentStatus(event: any, appointment: any): void {
     const newStatus = event.target.value;

@@ -1,123 +1,178 @@
 /* General Styles */
+.heading {
+  text-align: center;
+  margin: 0 auto;
+  color: white; /* Darker shade for text */
+  margin: 0;
+  padding: 15px 25px;
+  border: 2px solid #d9e2ec;
+  border-radius: 8px;
+  animation: fadeIn 0.8s ease-in-out;
+  background: linear-gradient(135deg, #0078d7, #8a84ff);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Centering the text properly */
+.heading h2 {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  justify-self: center; /* Ensures it stays centered */
+  margin: 0;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 90px;
+  left: 28px;
+  padding: 8px 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+/* Global Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7f6;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  h2 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-  }
-  
-  /* Form Group Styles */
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    color: #34495e;
-    margin-bottom: 0.5rem;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-    outline: none;
-  }
-  
-  .form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-  
-  /* Button Styles */
-  .button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #3498db;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-  }
-  
-  .button:active {
-    transform: translateY(0);
-  }
-  
-  .save-button {
-    width: 100%;
-    margin-top: 1rem;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #00c6ff, #0072ff); /* Medical Blue Gradient */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container Styling */
+.container {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 600px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Heading */
+/* h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.9rem;
+  font-weight: 600;
+} */
+
+/* Form Group Styles */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Input & Textarea Styles */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+  background-color: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #0072ff;
+  box-shadow: 0 0 8px rgba(0, 114, 255, 0.3);
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Save Button */
+.save-button {
+  width: 100%;
+  background-color: #27ae60; /* Medical Green */
+  margin-top: 1rem;
+}
+
+.save-button:hover {
+  background-color: #219150;
+  transform: translateY(-2px);
+}
+
+/* Cancel Button */
+.cancel-button {
+  width: 100%;
+  background-color: #e74c3c; /* Red for cancel */
+  margin-top: 0.8rem;
+}
+
+.cancel-button:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Hover Effects */
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: #0072ff;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
       opacity: 0;
       transform: translateY(-20px);
-    }
-    to {
+  }
+  to {
       opacity: 1;
       transform: translateY(0);
-    }
   }
-  
-  /* Hover Effects */
-  .form-group input:hover,
-  .form-group textarea:hover {
-    border-color: #3498db;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+      padding: 1.5rem;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 600px) {
-    .container {
-      padding: 1rem;
-    }
-  
-    h2 {
-      font-size: 1.5rem;
-    }
-  
-    .button {
-      padding: 0.5rem 1rem;
-    }
+
+  h2 {
+      font-size: 1.6rem;
   }
+
+  .button {
+      padding: 0.6rem 1.2rem;
+  }
+}

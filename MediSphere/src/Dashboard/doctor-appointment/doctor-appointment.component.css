@@ -1,4 +1,82 @@
 /* General Styles */
+/* Heading Section */
+.heading {
+  text-align: center;
+  margin: 0 auto;
+  color: white; /* Darker shade for text */
+  margin: 0;
+  padding: 15px 25px;
+  border: 2px solid #d9e2ec;
+  border-radius: 8px;
+  animation: fadeIn 0.8s ease-in-out;
+  background: linear-gradient(135deg, #0078d7, #8a84ff);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Centering the text properly */
+.heading h2 {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  justify-self: center; /* Ensures it stays centered */
+  margin: 0;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 90px;
+  left: 28px;
+  padding: 8px 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* Icon Styling */
+.heading fa-icon {
+  font-size: 20px;
+  margin-right: 10px;
+  color: white;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .heading {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px;
+  }
+
+  .heading h2 {
+      font-size: 18px;
+  }
+
+  .back-button {
+      font-size: 14px;
+      padding: 6px 12px;
+  }
+}
+
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f7fc;

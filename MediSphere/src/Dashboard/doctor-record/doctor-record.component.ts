@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicalReport, ReportService } from '../../Services/doctor-report-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -28,7 +28,8 @@ export class DoctorRecordComponent implements OnInit {
 
   constructor(
     private reportService: ReportService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -91,5 +92,8 @@ export class DoctorRecordComponent implements OnInit {
         (error) => console.error('Error adding report:', error)
       );
     }
+  }
+  navigateToDashboard(): void {
+    this.router.navigate(['/app-doctor-dashboard']); // Replace with your actual route
   }
 }
